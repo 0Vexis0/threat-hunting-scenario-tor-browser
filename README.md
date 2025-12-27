@@ -154,12 +154,12 @@ DeviceNetworkEvents
 
 ## Summary
 
-The user "employee" on the "threat-hunt-lab" device initiated and completed the installation of the TOR browser. They proceeded to launch the browser, establish connections within the TOR network, and created various files related to TOR on their desktop, including a file named `tor-shopping-list.txt`. This sequence of activities indicates that the user actively installed, configured, and used the TOR browser, likely for anonymous browsing purposes, with possible documentation in the form of the "shopping list" file.
+On December 24, the computer named cybernecromancy showed clear signs that a special privacy-focused web browser called Tor was deliberately downloaded and used. First, files related to Tor appeared on the system, including an installer and a text file that suggested the user was actively working with the program. Shortly after, the Tor installer was run, which placed the browser on the computer without requiring much user interaction. The browser was then opened, confirming it was not just downloaded but actually used. Once opened, the browser created multiple background programs that are normal for Tor. The computer then began making internet connections through known Tor pathways, which are designed to hide a user’s online activity. These connections continued for several minutes, showing sustained use rather than a brief test. Overall, the evidence shows that Tor was intentionally installed and used on this computer to browse the internet in a more anonymous way.
 
 ---
 
 ## Response Taken
 
-TOR usage was confirmed on the endpoint `threat-hunt-lab` by the user `employee`. The device was isolated, and the user's direct manager was notified.
+TOR usage was confirmed on the endpoint `cybernecromancy` by the user `cybermaster`. The device was isolated, and the user's direct manager was notified.
 
 ---
