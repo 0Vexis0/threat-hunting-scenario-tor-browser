@@ -35,8 +35,8 @@ Searched for any file that had the string "tor" in it and discovered what looks 
 
 ```kql
 DeviceFileEvents  
-| where DeviceName == "threat-hunt-lab"  
-| where InitiatingProcessAccountName == "employee"  
+| where DeviceName == "cybernecromancy"  
+| where InitiatingProcessAccountName == "cybermaster"  
 | where FileName contains "tor"  
 | where Timestamp >= datetime(2024-11-08T22:14:48.6065231Z)  
 | order by Timestamp desc  
