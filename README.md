@@ -103,52 +103,109 @@ DeviceNetworkEvents
 
 ---
 
-## Chronological Event Timeline 
+Chronological Events
 
-### 1. File Download - TOR Installer
 
-- **Timestamp:** `2024-11-08T22:14:48.6065231Z`
-- **Event:** The user "employee" downloaded a file named `tor-browser-windows-x86_64-portable-14.0.1.exe` to the Downloads folder.
-- **Action:** File download detected.
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
+TOR Browser Threat Hunt Timeline (Chronological)
+2025-12-24 21:03:55.2601082 UTC
+Initial TOR-related file activity detected
+DeviceFileEvents logs show the first TOR-related artifacts appearing on the system.
 
-### 2. Process Execution - TOR Browser Installation
 
-- **Timestamp:** `2024-11-08T22:16:47.4484567Z`
-- **Event:** The user "employee" executed the file `tor-browser-windows-x86_64-portable-14.0.1.exe` in silent mode, initiating a background installation of the TOR Browser.
-- **Action:** Process creation detected.
-- **Command:** `tor-browser-windows-x86_64-portable-14.0.1.exe /S`
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
+Files containing the string “tor” were written to disk.
 
-### 3. Process Execution - TOR Browser Launch
 
-- **Timestamp:** `2024-11-08T22:17:21.6357935Z`
-- **Event:** User "employee" opened the TOR browser. Subsequent processes associated with TOR browser, such as `firefox.exe` and `tor.exe`, were also created, indicating that the browser launched successfully.
-- **Action:** Process creation of TOR browser-related executables detected.
-- **File Path:** `C:\Users\employee\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe`
+Activity attributed to account cybermaster.
 
-### 4. Network Connection - TOR Network
 
-- **Timestamp:** `2024-11-08T22:18:01.1246358Z`
-- **Event:** A network connection to IP `176.198.159.33` on port `9001` by user "employee" was established using `tor.exe`, confirming TOR browser network activity.
-- **Action:** Connection success.
-- **Process:** `tor.exe`
-- **File Path:** `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`
+Evidence indicates:
 
-### 5. Additional Network Connections - TOR Browser Activity
 
-- **Timestamps:**
-  - `2024-11-08T22:18:08Z` - Connected to `194.164.169.85` on port `443`.
-  - `2024-11-08T22:18:16Z` - Local connection to `127.0.0.1` on port `9150`.
-- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "employee" through the TOR browser.
-- **Action:** Multiple successful connections detected.
+A TOR installer was downloaded.
 
-### 6. File Creation - TOR Shopping List
 
-- **Timestamp:** `2024-11-08T22:27:19.7259964Z`
-- **Event:** The user "employee" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
-- **Action:** File creation detected.
-- **File Path:** `C:\Users\employee\Desktop\tor-shopping-list.txt`
+Multiple TOR-related files were copied to the Desktop.
+
+
+Creation of a text file named tor-shopping-list.txt.
+
+
+This marks the earliest observable indicator of TOR-related activity on the host.
+
+
+Significance:
+ This represents the initial compromise vector or policy-violating software introduction phase.
+
+2025-12-24 21:11:54.147233 UTC
+TOR Browser installation executed
+DeviceProcessEvents confirm execution of:
+
+
+tor-browser-windows-x86_64-portable-15.0.3.exe
+
+
+Executed from the Downloads directory.
+
+
+The command line indicates a silent installation, suggesting user intent to deploy TOR without interactive prompts.
+
+
+Significance:
+ Confirms intentional installation of TOR Browser rather than passive file presence.
+
+2025-12-24 21:13:25 UTC
+TOR Browser first execution
+DeviceProcessEvents show firefox.exe and tor.exe processes spawning from the TOR Browser directory.
+
+
+This timestamp confirms the first known execution of the TOR Browser application.
+
+
+Additional TOR-related processes were spawned shortly afterward.
+
+
+Significance:
+ This is the transition point from installation to active usage.
+
+2025-12-24 21:14:18.2498868 UTC
+TOR network communication initiated (Port 9150 / related ports)
+DeviceNetworkEvents logs show outbound connections on known TOR ports.
+
+
+Initiating process was not SYSTEM, indicating user-launched activity.
+
+
+TOR-associated ports observed include:
+
+
+9150
+
+
+9050 / 9051 (loopback and SOCKS proxy usage typical of TOR)
+
+
+Significance:
+ Confirms successful TOR circuit establishment.
+
+2025-12-24 21:15:32.6853456 UTC
+Continued TOR network activity
+Additional outbound TOR connections observed.
+
+
+Indicates persistence of TOR Browser session.
+
+
+
+2025-12-24 21:16:11.7999242 UTC
+Ongoing TOR network usage
+Further TOR-related outbound traffic detected.
+
+
+Confirms sustained TOR usage rather than a single test launch.
+
+
+Significance:
+ Establishes active anonymized browsing behavior.
 
 ---
 
